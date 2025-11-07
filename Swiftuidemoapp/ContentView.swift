@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var dadan = "Daldan daldan"
     var body: some View {
         VStack {
             Image(systemName: "swift")
@@ -16,9 +17,12 @@ struct ContentView: View {
                 .foregroundColor(.orange)
                 .scaledToFit()
                 
-            Text("Hello, world!")
+            Text(dadan)
                 .font(.largeTitle)
-            
+            Button("Click me!") {
+                dadan = "Very sweet dall!"
+//               print("You clicked me")
+            }
         }
         .padding()
     }
