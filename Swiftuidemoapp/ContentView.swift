@@ -12,6 +12,8 @@ struct ContentView: View {
     @State private var message = ""
     @State private var imgName = ""
     @State private var imgNumber = 0
+    @State private var lastMessageNum = 0
+    @State private var lastImageNUm = 0
     
     var body: some View {
         
@@ -23,7 +25,8 @@ struct ContentView: View {
                 .fontWeight(.heavy)
                 .multilineTextAlignment(.center)
                 .minimumScaleFactor(0.5)
-                .frame(height: 100).animation(.easeInOut(duration: 0.7), value: message)
+                .frame(height: 100)
+                .animation(.easeInOut(duration: 0.17), value: message)
             
             Image(imgName)
                 .resizable()
@@ -32,7 +35,7 @@ struct ContentView: View {
                 .scaledToFit()
                 .clipShape(RoundedRectangle(cornerRadius: 30))
                 .shadow(radius: 30)
-                .animation(.easeInOut(duration: 1), value: imgNumber)
+                .animation(.easeInOut(duration: 0.50), value: imgName)
             //                .frame(width: 200, height: 200)
        
             Spacer()
@@ -58,10 +61,25 @@ struct ContentView: View {
 //                imgNumber += 1
 //                if imgNumber == messages.count {
 //                    imgNumber = 0
-//                    
+//
 //                }
-                message = messages[Int.random(in: 0...messages.count-1)]
-                imgName = "image\(Int.random(in: 0...9))"
+//                message = messages[Int.random(in: 0...messages.count-1)]
+//                imgName = "image\(Int.random(in: 0...9))"
+                
+                //While LOOP:
+                var messageNumber = Int.random(in: 0...messages.count - 1)
+                while messageNumber == lastMessageNum {
+                    messageNumber = Int.random(in: 0...messages.count - 1)
+                }
+                message = messages[messageNumber]
+                lastMessageNum = messageNumber
+                
+                var imageNumber = Int.random(in: 0...9)
+                while imageNumber == lastImageNUm {
+                    imageNumber = Int.random(in: 0...9)
+                }
+                imgName = "image\(imageNumber)"
+                lastImageNUm = imageNumber
                 
                 //                print(imgNumber)
                 //                let imgString1 = "hand.thumbsup"
