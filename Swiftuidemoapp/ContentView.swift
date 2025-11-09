@@ -16,7 +16,15 @@ struct ContentView: View {
     var body: some View {
         
         VStack {
-            Spacer()
+        
+            
+            Text(message)
+                .font(.largeTitle)
+                .fontWeight(.heavy)
+                .multilineTextAlignment(.center)
+                .minimumScaleFactor(0.5)
+                .frame(height: 100).animation(.easeInOut(duration: 0.7), value: message)
+            
             Image(imgName)
                 .resizable()
                 .imageScale(.large)
@@ -24,11 +32,9 @@ struct ContentView: View {
                 .scaledToFit()
                 .clipShape(RoundedRectangle(cornerRadius: 30))
                 .shadow(radius: 30)
+                .animation(.easeInOut(duration: 1), value: imgNumber)
             //                .frame(width: 200, height: 200)
-            
-            Text(message)
-                .font(.largeTitle)
-                .fontWeight(.ultraLight)
+       
             Spacer()
             //            {
             //                Button("Awesome!") {
@@ -41,13 +47,20 @@ struct ContentView: View {
             Button("Press me!") {
                 let message1 = "You are Awesome"
                 let message2 = "You are Great"
-                message = (message == message1 ? message2 : message1)
+                let messages = ["You are Awesome",
+                                "You are Great",
+                                "Are you Giant",
+                                "Be good and get strong. This wonderful news we lave it",
+                                "That is fabulos",
+                                "This wonderful news we lave it"]
+                message = messages[imgNumber]
+                imgName = "image\(imgNumber)"
                 imgNumber += 1
-                if imgNumber > 9 {
+                if imgNumber == messages.count {
                     imgNumber = 0
                     
                 }
-                imgName = "image\(imgNumber)"
+                
                 //                print(imgNumber)
                 //                let imgString1 = "hand.thumbsup"
                 //                let imgString2 = "sun.max.fill"
