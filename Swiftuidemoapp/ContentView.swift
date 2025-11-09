@@ -66,7 +66,12 @@ struct ContentView: View {
 //                message = messages[Int.random(in: 0...messages.count-1)]
 //                imgName = "image\(Int.random(in: 0...9))"
                 
-                //While LOOP:
+                //While LOOP : REPEAT
+//                var messageNumber: Int
+//                repeat {
+//                    messageNumber = Int.random(in: 0...messages.count - 1)
+//                } while messageNumber == lastMessageNum
+                
                 var messageNumber = Int.random(in: 0...messages.count - 1)
                 while messageNumber == lastMessageNum {
                     messageNumber = Int.random(in: 0...messages.count - 1)
