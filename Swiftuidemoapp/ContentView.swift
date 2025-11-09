@@ -53,13 +53,15 @@ struct ContentView: View {
                                 "Be good and get strong. This wonderful news we lave it",
                                 "That is fabulos",
                                 "This wonderful news we lave it"]
-                message = messages[imgNumber]
-                imgName = "image\(imgNumber)"
-                imgNumber += 1
-                if imgNumber == messages.count {
-                    imgNumber = 0
-                    
-                }
+//                message = messages[imgNumber]
+//                imgName = "image\(imgNumber)"
+//                imgNumber += 1
+//                if imgNumber == messages.count {
+//                    imgNumber = 0
+//                    
+//                }
+                message = messages[Int.random(in: 0...messages.count-1)]
+                imgName = "image\(Int.random(in: 0...9))"
                 
                 //                print(imgNumber)
                 //                let imgString1 = "hand.thumbsup"
